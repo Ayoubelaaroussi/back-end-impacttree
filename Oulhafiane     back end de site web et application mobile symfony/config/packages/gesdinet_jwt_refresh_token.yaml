@@ -1,0 +1,5 @@
+
+gesdinet_jwt_refresh_token:
+    ttl: 7200
+    single_use: true
+    user_provider: security.user.provider.concrete.user

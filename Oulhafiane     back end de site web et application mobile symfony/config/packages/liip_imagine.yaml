@@ -1,0 +1,30 @@
+# See dos how to configure the bundle: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    # driver: "gd"
+    loaders:
+        photo_user_loader:
+            flysystem:
+                filesystem_service: oneup_flysystem.photo_user_fs_filesystem
+    # resolvers:
+    #     photo_user_resolver:
+    #         flysystem:
+    #             filesystem_service: oneup_flysystem.photo_user_fs_filesystem
+    #             root_url:           '%uploads_base_url%'
+    #             cache_prefix:       media/cache
+    #             visibility:         public
+    data_loader: photo_user_loader
+    # cache: photo_user_resolver
+    filter_sets:
+        photo_thumb:
+            quality: 75
+            filters:
+                thumbnail:
+                    size:          [278, 177]
+                    mode:          outbound
+                    allow_upscale: true
+        photo_scale_down:
+            quality: 75
+            filters:
+                downscale:
+                    max:          [577, 364]
